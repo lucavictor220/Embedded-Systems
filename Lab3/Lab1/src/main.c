@@ -6,8 +6,9 @@
  */ 
 
 
-#include <avr/delay.h>
+
 #include "../headers/uart_stdio.h"
+
 
 int main() {
 	uart_stdio_Init();
