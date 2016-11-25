@@ -13,14 +13,14 @@ int main() {
 	//uart_stdio_Init();
 	// Set data direction register to output
 	DDRC = 0xFF;
-	
+	// Set data direction register to input
+	DDRD = 0x00;
 	while(1){
-		// Set 5V to every pin of C port
-		PORTC = 0xFF;
-		_delay_ms(1000);
-		// Set 0V to every pin of C port
-		PORTC = 0x00;
-		_delay_ms(1000);
+		if (~(PIND) & 0x02) {
+			PORTC = 0xFF;
+		} else {
+			PORTC = 0x00;
+		}
 	}
 	return 0;
 }
