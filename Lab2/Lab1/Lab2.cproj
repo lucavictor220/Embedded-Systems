@@ -96,7 +96,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="headers\led.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="headers\uart_stdio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\led.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">

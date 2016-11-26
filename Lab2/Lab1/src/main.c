@@ -7,19 +7,23 @@
 
 
 #include "../headers/uart_stdio.h"
+#include "../headers/led.h"
 #include <avr/delay.h>
 
+
 int main() {
-	//uart_stdio_Init();
-	// Set data direction register to output
-	DDRC = 0xFF;
-	// Set data direction register to input
+	uart_stdio_Init();
+	struct Leds green;
+	green.pin = 7;
+	green.ddr = &DDRC;
+	green.port = &PORTC;
+	ledInit(&green);
 	DDRD = 0x00;
 	while(1){
-		if (~(PIND) & 0x02) {
-			PORTC = 0xFF;
+		if (~(PIND) & 0x04) {
+			ledOn(&green);
 		} else {
-			PORTC = 0x00;
+			ledOff(&green);
 		}
 	}
 	return 0;

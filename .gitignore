@@ -5,3 +5,5 @@ bin
 Debug
 Release
 *.tmp
+.pdsprj
+.pdsbak
