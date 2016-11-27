@@ -96,24 +96,33 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="headers\led.h">
+    <Compile Include="drivers\button\button.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="headers\uart_stdio.h">
+    <Compile Include="drivers\button\button.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\led.c">
+    <Compile Include="drivers\led\led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\led\led.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\uart\uart_stdio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="drivers\uart\uart_stdio.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\uart_stdio.c">
-      <SubType>compile</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="headers" />
+    <Folder Include="drivers\led" />
+    <Folder Include="drivers\button" />
+    <Folder Include="drivers\uart" />
+    <Folder Include="drivers" />
     <Folder Include="src" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

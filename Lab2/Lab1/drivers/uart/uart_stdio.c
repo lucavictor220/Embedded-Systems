@@ -4,7 +4,7 @@
  * Created: 11/6/2016 1:04:23 PM
  *  Author: Vitiok
  */ 
-#include "../headers/uart_stdio.h"
+#include "uart_stdio.h"
 FILE uart_istream = FDEV_SETUP_STREAM(uart_PutChar, NULL, _FDEV_SETUP_WRITE);
 
 void uart_stdio_Init(void)

@@ -6,24 +6,52 @@
  */ 
 
 
-#include "../headers/uart_stdio.h"
-#include "../headers/led.h"
+#include "../drivers/uart/uart_stdio.h"
+#include "../drivers/led/led.h"
+#include "../drivers/button/button.h"
 #include <avr/delay.h>
 
 
 int main() {
 	uart_stdio_Init();
-	struct Leds green;
-	green.pin = 7;
-	green.ddr = &DDRC;
-	green.port = &PORTC;
-	ledInit(&green);
-	DDRD = 0x00;
+	struct Led greenLed;
+	struct Led redLed;
+	
+	struct Button buttonForGreenLed;
+	struct Button buttonForRedLed;
+	
+	buttonForGreenLed.pinIndex = 2;
+	buttonForGreenLed.ddr = &DDRD;
+	buttonForGreenLed.pin = &PIND;
+	
+	buttonForRedLed.pinIndex = 3;
+	buttonForRedLed.ddr = &DDRD;
+	buttonForRedLed.pin = &PIND;
+	
+	greenLed.pin = 7;
+	greenLed.ddr = &DDRC;
+	greenLed.port = &PORTC;
+	
+	redLed.pin = 0;
+	redLed.ddr = &DDRC;
+	redLed.port = &PORTC;
+	
+	ledInit(&greenLed);
+	ledInit(&redLed);
+	
+	buttonInit(&buttonForGreenLed);
+	buttonInit(&buttonForRedLed);
+	
 	while(1){
-		if (~(PIND) & 0x04) {
-			ledOn(&green);
+		if (buttonIsPressed(&buttonForGreenLed)) {
+			ledOn(&greenLed);
 		} else {
-			ledOff(&green);
+			ledOff(&greenLed);
+		}
+		if (buttonIsPressed(&buttonForRedLed)) {
+			ledOn(&redLed);
+		} else {
+			ledOff(&redLed);
 		}
 	}
 	return 0;

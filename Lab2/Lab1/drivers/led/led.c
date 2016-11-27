@@ -5,16 +5,16 @@
  *  Author: Vitiok
  */ 
 
-#include "../headers/led.h"
+#include "led.h"
 
-void ledInit(struct Leds *led) {
+void ledInit(struct Led *led) {
 	*(led->ddr) |= 1 << led->pin;
 }
 
-void ledOn(struct Leds *led) {
+void ledOn(struct Led *led) {
 	*(led->port) |= 1 << led->pin;
 }
 
-void ledOff(struct Leds *led) {
+void ledOff(struct Led *led) {
 	*(led->port) &= ~(1 << led->pin);
 }

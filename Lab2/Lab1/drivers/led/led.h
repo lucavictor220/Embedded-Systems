@@ -10,15 +10,15 @@
 #define LED_H_
 #include <avr/io.h>
 
-struct Leds {
+struct Led {
 	uint8_t pin;
 	volatile uint8_t *ddr;
 	volatile uint8_t *port;
 };
 
-void ledInit(struct Leds *led);
-void ledOn(struct Leds *led);
-void ledOff(struct Leds *led);
+void ledInit(struct Led *led);
+void ledOn(struct Led *led);
+void ledOff(struct Led *led);
 
 
 
